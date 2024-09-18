@@ -1,14 +1,20 @@
 name: Build Caddy+Cloudflare
 
 on: workflow_dispatch
-
+#on: push
 jobs:
-
-  build:
-
+  push_to_registry:
+    name: push docker image to hub
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag caddy-cf:$(date +%s)
+      - name: login to docker registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
+
+      - name: build and push docker image to registry
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: caddy-cf:latest
