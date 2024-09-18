@@ -17,4 +17,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: caddy-cf:latest
+          tags: str4ngemd/caddy-cf:latest
