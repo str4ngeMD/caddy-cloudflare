@@ -1,5 +1,10 @@
 This should keep an up-to-date docker image for caddy with cloudflare module.
-Docker Hub: https://hub.docker.com/r/str4ngemd/caddy-cf
+
+Docker Hub: 
+```sh
+docker pull str4ngemd/caddy-cf
+```
+https://hub.docker.com/r/str4ngemd/caddy-cf
 
 Helpful Links:
  - https://hub.docker.com/_/caddy
