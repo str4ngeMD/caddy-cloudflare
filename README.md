@@ -1,4 +1,4 @@
-This should keep an up-to-date docker image for caddy with cloudflare module.
+This should[^1] keep an up-to-date docker image for caddy with cloudflare module.
 
 Docker Hub: 
 ```sh
@@ -10,3 +10,5 @@ Helpful Links:
  - https://hub.docker.com/_/caddy
  - https://github.com/caddy-dns/cloudflare
  - https://github.com/lucacome/docker-image-update-checker
+
+[^1]: this is very likely to break or to be broken to begin with.
