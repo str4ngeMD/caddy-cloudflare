@@ -1,6 +1,9 @@
 name: Build Caddy+Cloudflare
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 4 * * 5'
 #on: push
 jobs:
   push_to_registry:
