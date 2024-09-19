@@ -7,14 +7,23 @@ jobs:
     name: push docker image to hub
     runs-on: ubuntu-latest
     steps:
+      - name: Check if update available
+        id: check
+        uses: lucacome/docker-image-update-checker@v1
+        with:
+          base-image: caddy:latest
+          image: str4ngemd/caddy-cf:latest
+
       - name: login to docker registry
         uses: docker/login-action@v3
         with:
           username: ${{secrets.DOCKERHUB_USERNAME}}
           password: ${{secrets.DOCKERHUB_TOKEN}}
+        if: steps.check.outputs.needs-updating == 'true'
 
       - name: build and push docker image to registry
         uses: docker/build-push-action@v5
         with:
           push: true
           tags: str4ngemd/caddy-cf:latest
+        if: steps.check.outputs.needs-updating == 'true'
